@@ -8,3 +8,13 @@ where the mug is or where the liquid line is and to avoid possible burning issue
 Detector: A Smart Solution for the Visually Impaired is a sensor that can 1) indicate when the
 object, the bottle is approaching the cup glass so that the user can know when it is safe to pour,
 2) indicate when the liquid has reached the level that has to be stopped or it will spill or overflow.
+
+Software
+The inputs are a distance detector and a liquid-level detector. I started with defining pins for trig
+and echo at pins 2 and 3 for the distance detector and initialized pin 7 for the liquid level detector. I then initialized the pins for the outputs, a buzzer pin 13, and a vibrator, pin 9. Then, I set up inputs and outputs with pinMode in the loop void setup().In the loop of void loop(), I used digitalRead to read the value of pin 7, the liquid level sensor, if the value is low, meaning the liquid is not detected, the buzzer will not buzz. If the value is not
+low, the buzzer will buzz for the frequency of 0.5 Hz. And then, I wanted to know the distance between the object and the sensor, so I triggered the
+sensor by setting the trigPin high for 10 microseconds and used pulseIn() to read the echoPin
+on HIGH and know the duration in between them. I calculated the distance in centimeters with
+duration*0.0343/2. Lately, if the distance is less than 20 centimeters, meaning it is safe to pour
+the liquid, the vibrator will vibrate, or else it won’t vibrate.
+
